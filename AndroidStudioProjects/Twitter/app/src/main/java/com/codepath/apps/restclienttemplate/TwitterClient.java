@@ -44,18 +44,30 @@ public class TwitterClient extends OAuthBaseClient {
 	}
 	// CHANGE THIS
 	// DEFINE METHODS for different API endpoints here
-	public void getHomeTimeline(int page, JsonHttpResponseHandler handler) {
-		String apiUrl = getApiUrl("statuses/home_timeline.json");
-		RequestParams params = new RequestParams();
-		params.put("page", String.valueOf(page));
-		client.get(apiUrl, params, handler);
-	}
+//	public void getHomeTimeline(int page, JsonHttpResponseHandler handler) {
+//		String apiUrl = getApiUrl("statuses/home_timeline.json");
+//		RequestParams params = new RequestParams();
+//		params.put("count", 25);
+//		params.put("since_id", 1);
+//		params.put("page", String.valueOf(page));
+//		client.get(apiUrl, params, handler);
+//	}
 
 	public void postTweet(String body, JsonHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/update.json");
 		RequestParams params = new RequestParams();
 		params.put("status", body);
 		client.post(apiUrl, String.valueOf(params), handler);
+	}
+
+	public void getHomeTimeline(JsonHttpResponseHandler jsonHttpResponseHandler) {
+		String apiUrl = getApiUrl("statuses/home_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		params.put("since_id", 1);
+		params.put("page", String.valueOf(jsonHttpResponseHandler));
+		client.get(apiUrl, params, jsonHttpResponseHandler);
+
 	}
 
 
