@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -71,18 +72,27 @@ public class TimelineActivity extends AppCompatActivity {
         });
     }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_list, menu);
-            return true;
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_list, menu);
+        return true;
+    }
 
-        @Override
-        public boolean onOptionsItemSelected(MenuItem logout) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.logout) {
             onLogoutButton();
-            return true;
         }
+        if (item.getItemId() == R.id.compose) {
+            onComposeButton();
+        }
+        return true;
+    }
+
+    private void onComposeButton() {
+        Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show();
+    }
 
     void onLogoutButton() {
         // forget who's logged in
@@ -94,4 +104,7 @@ public class TimelineActivity extends AppCompatActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
+
+
+
 }
