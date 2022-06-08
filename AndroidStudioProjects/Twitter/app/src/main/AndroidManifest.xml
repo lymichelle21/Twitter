@@ -21,7 +21,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name"
+            android:label="Welcome to Tweeter!"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

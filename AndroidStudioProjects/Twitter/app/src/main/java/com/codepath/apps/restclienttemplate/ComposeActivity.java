@@ -84,6 +84,7 @@ public class ComposeActivity extends AppCompatActivity {
 
         // Start here tomorrow to get 280 to show automatically when composing new tweet
         EditText etValue = findViewById(R.id.etCompose);
+        tvCharacterCount.setText(String.valueOf(MAX_TWEET_LENGTH));
         etValue.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -97,7 +98,7 @@ public class ComposeActivity extends AppCompatActivity {
                     btnTweet.setTextColor(Color.parseColor("#FF0000"));
                 }
                 else {
-                    btnTweet.setTextColor(Color.parseColor("#0000FF"));
+                    btnTweet.setTextColor(Color.parseColor("#000000"));
                 }
             }
 
