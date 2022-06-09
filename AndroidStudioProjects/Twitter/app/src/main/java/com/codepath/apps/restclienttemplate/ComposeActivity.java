@@ -43,18 +43,18 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
-        tvCharacterCount=findViewById(R.id.tvCharacterCount);
+        tvCharacterCount = findViewById(R.id.tvCharacterCount);
 
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tweetContent = etCompose.getText().toString();
                 if (tweetContent.isEmpty()) {
-                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannot be empty", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannot be empty", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (tweetContent.length() > MAX_TWEET_LENGTH) {
-                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long", Toast.LENGTH_LONG).show();
                     return;
                 }
                 //Toast.makeText(ComposeActivity.this, tweetContent, Toast.LENGTH_LONG).show();
@@ -93,11 +93,10 @@ public class ComposeActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tvCharacterCount.setText(String.valueOf(MAX_TWEET_LENGTH-s.length()));
+                tvCharacterCount.setText(String.valueOf(MAX_TWEET_LENGTH - s.length()));
                 if (s.length() > MAX_TWEET_LENGTH) {
                     btnTweet.setTextColor(Color.parseColor("#FF0000"));
-                }
-                else {
+                } else {
                     btnTweet.setTextColor(Color.parseColor("#000000"));
                 }
             }
